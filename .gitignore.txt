@@ -1,0 +1,15 @@
+# UiPath user-specific
+.project
+.settings/
+*.local
+*.tmp
+
+# Runtime data
+Input/Attachments/*
+Output/RawText/*
+Output/Results/*
+Output/Logs/*
+
+# Credentials
+*.json
+*.env
