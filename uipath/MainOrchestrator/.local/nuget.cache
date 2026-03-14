@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "pfiLjgwC6Ow=",
+  "dgSpecHash": "bIVzHIQXd/g=",
   "success": true,
   "projectFilePath": "D:\\agentic-rpa-document-orchestrator\\agentic-rpa-document-orchestrator\\uipath\\MainOrchestrator\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\Rishabh Jain\\.nuget\\packages\\avalonedit\\6.1.3.50\\avalonedit.6.1.3.50.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\azure.core\\1.18.0\\azure.core.1.18.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\bitmiracle.docotic.pdf\\9.8.18872-dev\\bitmiracle.docotic.pdf.9.8.18872-dev.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\bitmiracle.libtiff.net\\2.4.649\\bitmiracle.libtiff.net.2.4.649.nupkg.sha512",
@@ -117,6 +118,7 @@
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\polly\\7.1.0\\polly.7.1.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\radcommons.core\\2.0.1\\radcommons.core.2.0.1.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\rbush.signed\\4.0.0\\rbush.signed.4.0.0.nupkg.sha512",
+    "C:\\Users\\Rishabh Jain\\.nuget\\packages\\restsharp\\106.15.0\\restsharp.106.15.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\runtime.any.system.collections\\4.3.0\\runtime.any.system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\runtime.any.system.diagnostics.tools\\4.3.0\\runtime.any.system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\runtime.any.system.diagnostics.tracing\\4.3.0\\runtime.any.system.diagnostics.tracing.4.3.0.nupkg.sha512",
@@ -170,7 +172,7 @@
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\sixlabors.fonts\\1.0.1\\sixlabors.fonts.1.0.1.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\sixlabors.imagesharp\\2.1.10\\sixlabors.imagesharp.2.1.10.nupkg.sha512",
-    "C:\\Users\\Rishabh Jain\\.nuget\\packages\\system.activities.viewmodels\\1.20251103.2\\system.activities.viewmodels.1.20251103.2.nupkg.sha512",
+    "C:\\Users\\Rishabh Jain\\.nuget\\packages\\system.activities.viewmodels\\1.20251127.3\\system.activities.viewmodels.1.20251127.3.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
@@ -320,6 +322,8 @@
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\25.10.24\\uipath.uiautomation.activities.runtime.design.25.10.24.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\25.10.24\\uipath.uiautomation.design.recoverypanel.25.10.24.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\uipath.vision\\3.17.2\\uipath.vision.3.17.2.nupkg.sha512",
+    "C:\\Users\\Rishabh Jain\\.nuget\\packages\\uipath.webapi.activities\\2.4.0\\uipath.webapi.activities.2.4.0.nupkg.sha512",
+    "C:\\Users\\Rishabh Jain\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.4.0\\uipath.webapi.activities.runtime.2.4.0.nupkg.sha512",
     "C:\\Users\\Rishabh Jain\\.nuget\\packages\\uipath.wordstonumbers\\1.0.0\\uipath.wordstonumbers.1.0.0.nupkg.sha512"
   ],
   "logs": []

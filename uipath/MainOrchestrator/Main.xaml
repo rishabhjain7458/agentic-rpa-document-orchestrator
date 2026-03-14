@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uisape="clr-namespace:UiPath.IntelligentOCR.StudioWeb.Activities.PDF.ExtractPDFText;assembly=UiPath.IntelligentOCR.StudioWeb.Activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uisape="clr-namespace:UiPath.IntelligentOCR.StudioWeb.Activities.PDF.ExtractPDFText;assembly=UiPath.IntelligentOCR.StudioWeb.Activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -50,6 +50,13 @@
       <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.PDF.ExtractPDFText</x:String>
       <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.PDF</x:String>
       <x:String>UiPath.Platform</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web.Activities.JSON.Models</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -120,18 +127,24 @@
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="833.6,479.65666666666664" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="874,4273.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="lstMailMessages" />
+      <Variable x:TypeArguments="x:String" Name="strJsonResult" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="449.6,56.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="612.8,56.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -163,30 +176,30 @@
         </sap:WorkflowViewStateService.ViewState>
       </umab:OutlookApplicationCard>
     </Sequence>
-    <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Sequence_10">
+    <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="612.8,4193.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each - Mail retrieved" sap:VirtualizedContainerService.HintSize="544,2443.2" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[lstMailMessages]">
+      <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each - Mail retrieved" sap:VirtualizedContainerService.HintSize="579.2,4110.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[lstMailMessages]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="snm:MailMessage">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="currentMailMessage" />
             </ActivityAction.Argument>
-            <TryCatch DisplayName="Try Catch  - Process email" sap:VirtualizedContainerService.HintSize="518.4,2251.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch  - Process email" sap:VirtualizedContainerService.HintSize="553.6,3918.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
-                <Sequence DisplayName="Save attachments" sap:VirtualizedContainerService.HintSize="516.8,1777.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Save attachments" sap:VirtualizedContainerService.HintSize="552,3444.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:SaveMailAttachments Attachments="{x:Null}" ResourceAttachments="{x:Null}" DisplayName="Save Email Attachments - Pdf attachments" ExcludeInlineAttachments="False" Filter=".*.pdf" FolderPath="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Input\Attachments\&quot; + currentMailMessage.SenderEmailAddress + &quot;_&quot; + currentMailMessage.DateAsDateTime.ToString(&quot;yyyyMMdd_HHmmss&quot;)]" sap:VirtualizedContainerService.HintSize="483.2,230.4" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentMailMessage]" OverwriteExisting="False" />
-                  <ui:LogMessage DisplayName="Log Message - Attachment count" sap:VirtualizedContainerService.HintSize="483.2,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Saved &quot; + currentMailMessage.Attachments.Count.ToString + &quot; attachment(s)&quot;]" />
-                  <ui:ForEachFileX DisplayName="For Each File in Folder - Saved attachemnts for current mail" Folder="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Input\Attachments\&quot; + currentMailMessage.SenderEmailAddress + &quot;_&quot; + currentMailMessage.DateAsDateTime.ToString(&quot;yyyyMMdd_HHmmss&quot;)]" sap:VirtualizedContainerService.HintSize="483.2,956.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+                  <ui:SaveMailAttachments Attachments="{x:Null}" ResourceAttachments="{x:Null}" DisplayName="Save Email Attachments - Pdf attachments" ExcludeInlineAttachments="False" Filter=".*.pdf" FolderPath="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Input\Attachments\&quot; + currentMailMessage.SenderEmailAddress + &quot;_&quot; + currentMailMessage.DateAsDateTime.ToString(&quot;yyyyMMdd_HHmmss&quot;)]" sap:VirtualizedContainerService.HintSize="518.4,230.4" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentMailMessage]" OverwriteExisting="False" />
+                  <ui:LogMessage DisplayName="Log Message - Attachment count" sap:VirtualizedContainerService.HintSize="518.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Saved &quot; + currentMailMessage.Attachments.Count.ToString + &quot; attachment(s)&quot;]" />
+                  <ui:ForEachFileX DisplayName="For Each File in Folder - Saved attachemnts for current mail" Folder="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Input\Attachments\&quot; + currentMailMessage.SenderEmailAddress + &quot;_&quot; + currentMailMessage.DateAsDateTime.ToString(&quot;yyyyMMdd_HHmmss&quot;)]" sap:VirtualizedContainerService.HintSize="518.4,2507.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
                     <ui:ForEachFileX.Body>
                       <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                         <ActivityAction.Argument1>
@@ -195,9 +208,11 @@
                         <ActivityAction.Argument2>
                           <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                         </ActivityAction.Argument2>
-                        <Sequence DisplayName="Process pdf's" sap:VirtualizedContainerService.HintSize="449.6,656" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <Sequence DisplayName="Process pdf's" sap:VirtualizedContainerService.HintSize="484.8,2206.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="strPdfText" />
+                            <Variable x:TypeArguments="njl:JObject" Name="jobjResult" />
+                            <Variable x:TypeArguments="x:Boolean" Name="boolFolderExists" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -205,15 +220,44 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <uisape:ExtractPDFText FilePassword="{x:Null}" ApplyOcr="True" DisplayName="Extract PDF Text - Use OCR to extract pdf text" sap:VirtualizedContainerService.HintSize="416,126.4" sap2010:WorkflowViewState.IdRef="ExtractPDFText_1" OcrEngine="UIPATH_DOCUMENT_OCR" PdfFile="[UiPath.Platform.ResourceHandling.LocalResource.FromPath(CurrentFile.FullName)]" Text="[strPdfText]" />
-                          <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text File - OCR Result" FileName="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\RawText&quot; + System.IO.Path.GetFileNameWithoutExtension(CurrentFile.FullName) + &quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="416,179.2" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strPdfText]" />
-                          <ui:LogMessage DisplayName="Log Message - OCR Completed" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;OCR completed for file : &quot; + CurrentFile.FullName]" />
-                          <ui:DeleteFileX DisplayName="Delete File - Current File" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]" />
+                          <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text File - OCR Result" FileName="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\RawText\&quot; + System.IO.Path.GetFileNameWithoutExtension(CurrentFile.FullName) +currentMailMessage.Headers(&quot;UID&quot;).ToString+ &quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="451.2,179.2" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strPdfText]" />
+                          <ui:LogMessage DisplayName="Log Message - OCR Completed" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;OCR completed for file : &quot; + CurrentFile.FullName]" />
+                          <ui:StartProcess Arguments="[&quot;agent\document_classifier.py &quot;&quot;&quot; + &quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\RawText\&quot; + System.IO.Path.GetFileNameWithoutExtension(CurrentFile.FullName) +currentMailMessage.Headers(&quot;UID&quot;).ToString+ &quot;.txt&quot; + &quot;&quot;&quot;&quot;]" DisplayName="Start Process" FileName="python" sap:VirtualizedContainerService.HintSize="451.2,124" sap2010:WorkflowViewState.IdRef="StartProcess_1" WorkingDirectory="D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator" />
+                          <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="451.2,126.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                          <ui:ReadTextFile File="{x:Null}" Content="[strJsonResult]" DisplayName="Read Text File" FileName="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\RawText\&quot; + System.IO.Path.GetFileNameWithoutExtension(CurrentFile.FullName) +currentMailMessage.Headers(&quot;UID&quot;).ToString+ &quot;_result.txt&quot;]" sap:VirtualizedContainerService.HintSize="451.2,127.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+                          <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="451.2,177.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jobjResult]" JsonString="[strJsonResult]" />
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Agent detected document type : &quot; + jobjResult(&quot;document_type&quot;).ToString + &quot; | &quot; + &quot;Confidence : &quot; + jobjResult(&quot;confidence&quot;).ToString]" />
+                          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[boolFolderExists]" sap:VirtualizedContainerService.HintSize="451.2,166.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\&quot; + jobjResult(&quot;document_type&quot;).ToString]" />
+                          <If Condition="[boolFolderExists]" sap:VirtualizedContainerService.HintSize="451.2,762.4" sap2010:WorkflowViewState.IdRef="If_1">
+                            <If.Then>
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,251.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\&quot; + jobjResult(&quot;document_type&quot;).ToString]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="416,187.2" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[CurrentFile.FullName]" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,377.6" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="416,126.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\&quot; + jobjResult(&quot;document_type&quot;).ToString]" />
+                                <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Output\&quot; + jobjResult(&quot;document_type&quot;).ToString]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="416,187.2" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[CurrentFile.FullName]" />
+                              </Sequence>
+                            </If.Else>
+                          </If>
                         </Sequence>
                       </ActivityAction>
                     </ui:ForEachFileX.Body>
                   </ui:ForEachFileX>
-                  <ui:LogMessage DisplayName="Log Message - Processed mail" sap:VirtualizedContainerService.HintSize="483.2,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processed email from: &quot; + currentMailMessage.From.Address]" />
-                  <ui:MoveOutlookMessage Account="{x:Null}" DisplayName="Move Outlook Desktop Mail Message - Processed" sap:VirtualizedContainerService.HintSize="483.2,169.6" sap2010:WorkflowViewState.IdRef="MoveOutlookMessage_1" MailFolder="Processed" MailMessage="[currentMailMessage]" />
+                  <ui:DeleteFolderX DisplayName="Delete Folder - Current Folder" sap:VirtualizedContainerService.HintSize="518.4,116.8" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[&quot;D:\agentic-rpa-document-orchestrator\agentic-rpa-document-orchestrator\Input\Attachments\&quot; + currentMailMessage.SenderEmailAddress + &quot;_&quot; + currentMailMessage.DateAsDateTime.ToString(&quot;yyyyMMdd_HHmmss&quot;)]" Recursive="True" />
+                  <ui:LogMessage DisplayName="Log Message - Processed mail" sap:VirtualizedContainerService.HintSize="518.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processed email from: &quot; + currentMailMessage.From.Address]" />
+                  <ui:MoveOutlookMessage Account="{x:Null}" DisplayName="Move Outlook Desktop Mail Message - Processed" sap:VirtualizedContainerService.HintSize="518.4,169.6" sap2010:WorkflowViewState.IdRef="MoveOutlookMessage_1" MailFolder="Processed" MailMessage="[currentMailMessage]" />
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -222,19 +266,19 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Log exception" sap:VirtualizedContainerService.HintSize="516.8,233.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence DisplayName="Log exception" sap:VirtualizedContainerService.HintSize="552,233.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="483.2,169.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;System exception : &quot; + exception.Message + &quot; ; &quot; + &quot;Source : &quot; + exception.Source]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.4,169.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;System exception : &quot; + exception.Message + &quot; ; &quot; + &quot;Source : &quot; + exception.Source]" />
                     </Sequence>
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
               <TryCatch.Finally>
-                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="516.8,94.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="552,94.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
