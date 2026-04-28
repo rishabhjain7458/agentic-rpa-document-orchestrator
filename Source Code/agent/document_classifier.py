@@ -82,6 +82,97 @@ DOCUMENT_KEYWORDS = {
         "application for",
         "sincerely",
         "regards"
+    ],
+
+    "medical_report": [
+        "patient name",
+        "diagnosis",
+        "treatment",
+        "prescription",
+        "medical report",
+        "doctor",
+        "hospital"
+    ],
+
+    "offer_letter": [
+        "offer letter",
+        "we are pleased to offer",
+        "position",
+        "joining date",
+        "salary",
+        "terms of employment"
+    ],
+
+    "leave_application": [
+        "leave application",
+        "leave request",
+        "sick leave",
+        "casual leave",
+        "respected sir",
+        "kindly grant"
+    ],
+
+    "id_proof": [
+        "government of india",
+        "aadhaar",
+        "date of birth",
+        "identity",
+        "id number",
+        "address"
+    ],
+
+    "meeting_minutes": [
+        "minutes of meeting",
+        "agenda",
+        "attendees",
+        "discussion points",
+        "action items",
+        "meeting notes"
+    ],
+
+    "project_proposal": [
+        "project proposal",
+        "objective",
+        "timeline",
+        "budget",
+        "deliverables",
+        "project scope"
+    ],
+
+    "salary_slip": [
+        "salary slip",
+        "employee id",
+        "basic salary",
+        "net pay",
+        "deductions",
+        "earnings"
+    ],
+
+    "legal_notice": [
+        "legal notice",
+        "hereby notified",
+        "under section",
+        "court",
+        "law",
+        "legal action"
+    ],
+
+    "academic_transcript": [
+        "transcript",
+        "semester",
+        "grade",
+        "marks",
+        "university",
+        "result"
+    ],
+
+    "insurance_document": [
+        "policy number",
+        "insurance",
+        "premium",
+        "coverage",
+        "claim",
+        "insured"
     ]
 }
 
@@ -109,7 +200,12 @@ def classify_document(text: str):
             "confidence": 0.0
         }
 
-    confidence = best_score / len(DOCUMENT_KEYWORDS[best_type])
+    total_score = sum(scores.values())
+
+    if total_score == 0:
+        confidence = 0.0
+    else:
+        confidence = best_score / total_score
 
     return {
         "document_type": best_type,
