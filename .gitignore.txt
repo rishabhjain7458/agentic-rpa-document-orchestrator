@@ -5,10 +5,10 @@
 *.tmp
 
 # Runtime data
-Input/Attachments/*
-Output/RawText/*
-Output/Results/*
-Output/Logs/*
+Source Code/Input/Attachments/*
+Source Code/Output/RawText/*
+Source Code/Output/Results/*
+Source Code/Output/Logs/*
 
 # Credentials
 *.json
