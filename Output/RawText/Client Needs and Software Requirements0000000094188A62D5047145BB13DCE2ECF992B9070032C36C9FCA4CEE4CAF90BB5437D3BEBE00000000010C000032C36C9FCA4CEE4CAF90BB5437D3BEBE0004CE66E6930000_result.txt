@@ -1,4 +1,0 @@
-{
-    "document_type": "requirements_doc",
-    "confidence": 0.33
-}
